@@ -1,0 +1,637 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D9EF254B231383E20004110E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF254A231383E20004110E /* AppDelegate.swift */; };
+		D9EF254D231383E20004110E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF254C231383E20004110E /* SceneDelegate.swift */; };
+		D9EF2552231383E20004110E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EF2550231383E20004110E /* Main.storyboard */; };
+		D9EF2554231383E30004110E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9EF2553231383E30004110E /* Assets.xcassets */; };
+		D9EF2557231383E30004110E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EF2555231383E30004110E /* LaunchScreen.storyboard */; };
+		D9EF2562231383E30004110E /* DynamicHeightNavigationBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF2561231383E30004110E /* DynamicHeightNavigationBarTests.swift */; };
+		D9EF256D231383E40004110E /* DynamicHeightNavigationBarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF256C231383E40004110E /* DynamicHeightNavigationBarUITests.swift */; };
+		D9EF257D231384330004110E /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF257C231384330004110E /* FirstViewController.swift */; };
+		D9EF257F2313843E0004110E /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF257E2313843E0004110E /* SecondViewController.swift */; };
+		D9EF25812313844D0004110E /* ThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF25802313844D0004110E /* ThirdViewController.swift */; };
+		D9EF25832313845B0004110E /* FourthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF25822313845B0004110E /* FourthViewController.swift */; };
+		D9EF258A23139EF20004110E /* DynamicNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF258923139EF20004110E /* DynamicNavigationBar.swift */; };
+		D9EF258C23139F600004110E /* DynamicNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF258B23139F600004110E /* DynamicNavigationController.swift */; };
+		D9EF258E23139F940004110E /* DynamicNavigationRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF258D23139F940004110E /* DynamicNavigationRootViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D9EF255E231383E30004110E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9EF253F231383E20004110E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9EF2546231383E20004110E;
+			remoteInfo = DynamicHeightNavigationBar;
+		};
+		D9EF2569231383E40004110E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9EF253F231383E20004110E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9EF2546231383E20004110E;
+			remoteInfo = DynamicHeightNavigationBar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D9EF2547231383E20004110E /* DynamicHeightNavigationBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicHeightNavigationBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9EF254A231383E20004110E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D9EF254C231383E20004110E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D9EF2551231383E20004110E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D9EF2553231383E30004110E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D9EF2556231383E30004110E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D9EF2558231383E30004110E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9EF255D231383E30004110E /* DynamicHeightNavigationBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DynamicHeightNavigationBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9EF2561231383E30004110E /* DynamicHeightNavigationBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightNavigationBarTests.swift; sourceTree = "<group>"; };
+		D9EF2563231383E30004110E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9EF2568231383E40004110E /* DynamicHeightNavigationBarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DynamicHeightNavigationBarUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9EF256C231383E40004110E /* DynamicHeightNavigationBarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicHeightNavigationBarUITests.swift; sourceTree = "<group>"; };
+		D9EF256E231383E40004110E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D9EF257C231384330004110E /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
+		D9EF257E2313843E0004110E /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		D9EF25802313844D0004110E /* ThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdViewController.swift; sourceTree = "<group>"; };
+		D9EF25822313845B0004110E /* FourthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FourthViewController.swift; sourceTree = "<group>"; };
+		D9EF258923139EF20004110E /* DynamicNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicNavigationBar.swift; sourceTree = "<group>"; };
+		D9EF258B23139F600004110E /* DynamicNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicNavigationController.swift; sourceTree = "<group>"; };
+		D9EF258D23139F940004110E /* DynamicNavigationRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicNavigationRootViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D9EF2544231383E20004110E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EF255A231383E30004110E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EF2565231383E40004110E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D9EF253E231383E20004110E = {
+			isa = PBXGroup;
+			children = (
+				D9EF2549231383E20004110E /* DynamicHeightNavigationBar */,
+				D9EF2560231383E30004110E /* DynamicHeightNavigationBarTests */,
+				D9EF256B231383E40004110E /* DynamicHeightNavigationBarUITests */,
+				D9EF2548231383E20004110E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D9EF2548231383E20004110E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D9EF2547231383E20004110E /* DynamicHeightNavigationBar.app */,
+				D9EF255D231383E30004110E /* DynamicHeightNavigationBarTests.xctest */,
+				D9EF2568231383E40004110E /* DynamicHeightNavigationBarUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D9EF2549231383E20004110E /* DynamicHeightNavigationBar */ = {
+			isa = PBXGroup;
+			children = (
+				D9EF254A231383E20004110E /* AppDelegate.swift */,
+				D9EF254C231383E20004110E /* SceneDelegate.swift */,
+				D9EF2585231384650004110E /* View Controllers */,
+				D9EF258823139EDC0004110E /* Dynamic Navigation Views */,
+				D9EF257B231384140004110E /* Supporting Files */,
+			);
+			path = DynamicHeightNavigationBar;
+			sourceTree = "<group>";
+		};
+		D9EF2560231383E30004110E /* DynamicHeightNavigationBarTests */ = {
+			isa = PBXGroup;
+			children = (
+				D9EF2561231383E30004110E /* DynamicHeightNavigationBarTests.swift */,
+				D9EF2563231383E30004110E /* Info.plist */,
+			);
+			path = DynamicHeightNavigationBarTests;
+			sourceTree = "<group>";
+		};
+		D9EF256B231383E40004110E /* DynamicHeightNavigationBarUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D9EF256C231383E40004110E /* DynamicHeightNavigationBarUITests.swift */,
+				D9EF256E231383E40004110E /* Info.plist */,
+			);
+			path = DynamicHeightNavigationBarUITests;
+			sourceTree = "<group>";
+		};
+		D9EF257B231384140004110E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D9EF2550231383E20004110E /* Main.storyboard */,
+				D9EF2553231383E30004110E /* Assets.xcassets */,
+				D9EF2555231383E30004110E /* LaunchScreen.storyboard */,
+				D9EF2558231383E30004110E /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D9EF2585231384650004110E /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D9EF257C231384330004110E /* FirstViewController.swift */,
+				D9EF257E2313843E0004110E /* SecondViewController.swift */,
+				D9EF25802313844D0004110E /* ThirdViewController.swift */,
+				D9EF25822313845B0004110E /* FourthViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		D9EF258823139EDC0004110E /* Dynamic Navigation Views */ = {
+			isa = PBXGroup;
+			children = (
+				D9EF258B23139F600004110E /* DynamicNavigationController.swift */,
+				D9EF258923139EF20004110E /* DynamicNavigationBar.swift */,
+				D9EF258D23139F940004110E /* DynamicNavigationRootViewController.swift */,
+			);
+			path = "Dynamic Navigation Views";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D9EF2546231383E20004110E /* DynamicHeightNavigationBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9EF2571231383E40004110E /* Build configuration list for PBXNativeTarget "DynamicHeightNavigationBar" */;
+			buildPhases = (
+				D9EF2543231383E20004110E /* Sources */,
+				D9EF2544231383E20004110E /* Frameworks */,
+				D9EF2545231383E20004110E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DynamicHeightNavigationBar;
+			productName = DynamicHeightNavigationBar;
+			productReference = D9EF2547231383E20004110E /* DynamicHeightNavigationBar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D9EF255C231383E30004110E /* DynamicHeightNavigationBarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9EF2574231383E40004110E /* Build configuration list for PBXNativeTarget "DynamicHeightNavigationBarTests" */;
+			buildPhases = (
+				D9EF2559231383E30004110E /* Sources */,
+				D9EF255A231383E30004110E /* Frameworks */,
+				D9EF255B231383E30004110E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9EF255F231383E30004110E /* PBXTargetDependency */,
+			);
+			name = DynamicHeightNavigationBarTests;
+			productName = DynamicHeightNavigationBarTests;
+			productReference = D9EF255D231383E30004110E /* DynamicHeightNavigationBarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D9EF2567231383E40004110E /* DynamicHeightNavigationBarUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D9EF2577231383E40004110E /* Build configuration list for PBXNativeTarget "DynamicHeightNavigationBarUITests" */;
+			buildPhases = (
+				D9EF2564231383E40004110E /* Sources */,
+				D9EF2565231383E40004110E /* Frameworks */,
+				D9EF2566231383E40004110E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D9EF256A231383E40004110E /* PBXTargetDependency */,
+			);
+			name = DynamicHeightNavigationBarUITests;
+			productName = DynamicHeightNavigationBarUITests;
+			productReference = D9EF2568231383E40004110E /* DynamicHeightNavigationBarUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D9EF253F231383E20004110E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "Zhi Zhou";
+				TargetAttributes = {
+					D9EF2546231383E20004110E = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					D9EF255C231383E30004110E = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = D9EF2546231383E20004110E;
+					};
+					D9EF2567231383E40004110E = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = D9EF2546231383E20004110E;
+					};
+				};
+			};
+			buildConfigurationList = D9EF2542231383E20004110E /* Build configuration list for PBXProject "DynamicHeightNavigationBar" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D9EF253E231383E20004110E;
+			productRefGroup = D9EF2548231383E20004110E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D9EF2546231383E20004110E /* DynamicHeightNavigationBar */,
+				D9EF255C231383E30004110E /* DynamicHeightNavigationBarTests */,
+				D9EF2567231383E40004110E /* DynamicHeightNavigationBarUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D9EF2545231383E20004110E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9EF2557231383E30004110E /* LaunchScreen.storyboard in Resources */,
+				D9EF2554231383E30004110E /* Assets.xcassets in Resources */,
+				D9EF2552231383E20004110E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EF255B231383E30004110E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EF2566231383E40004110E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D9EF2543231383E20004110E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9EF25832313845B0004110E /* FourthViewController.swift in Sources */,
+				D9EF257F2313843E0004110E /* SecondViewController.swift in Sources */,
+				D9EF257D231384330004110E /* FirstViewController.swift in Sources */,
+				D9EF25812313844D0004110E /* ThirdViewController.swift in Sources */,
+				D9EF254B231383E20004110E /* AppDelegate.swift in Sources */,
+				D9EF258E23139F940004110E /* DynamicNavigationRootViewController.swift in Sources */,
+				D9EF254D231383E20004110E /* SceneDelegate.swift in Sources */,
+				D9EF258A23139EF20004110E /* DynamicNavigationBar.swift in Sources */,
+				D9EF258C23139F600004110E /* DynamicNavigationController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EF2559231383E30004110E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9EF2562231383E30004110E /* DynamicHeightNavigationBarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D9EF2564231383E40004110E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D9EF256D231383E40004110E /* DynamicHeightNavigationBarUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D9EF255F231383E30004110E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9EF2546231383E20004110E /* DynamicHeightNavigationBar */;
+			targetProxy = D9EF255E231383E30004110E /* PBXContainerItemProxy */;
+		};
+		D9EF256A231383E40004110E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9EF2546231383E20004110E /* DynamicHeightNavigationBar */;
+			targetProxy = D9EF2569231383E40004110E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D9EF2550231383E20004110E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9EF2551231383E20004110E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D9EF2555231383E30004110E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9EF2556231383E30004110E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D9EF256F231383E40004110E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D9EF2570231383E40004110E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D9EF2572231383E40004110E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DynamicHeightNavigationBar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhi.DynamicHeightNavigationBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		D9EF2573231383E40004110E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DynamicHeightNavigationBar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhi.DynamicHeightNavigationBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		D9EF2575231383E40004110E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DynamicHeightNavigationBarTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhi.DynamicHeightNavigationBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DynamicHeightNavigationBar.app/DynamicHeightNavigationBar";
+			};
+			name = Debug;
+		};
+		D9EF2576231383E40004110E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DynamicHeightNavigationBarTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhi.DynamicHeightNavigationBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DynamicHeightNavigationBar.app/DynamicHeightNavigationBar";
+			};
+			name = Release;
+		};
+		D9EF2578231383E40004110E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DynamicHeightNavigationBarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhi.DynamicHeightNavigationBarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DynamicHeightNavigationBar;
+			};
+			name = Debug;
+		};
+		D9EF2579231383E40004110E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = DynamicHeightNavigationBarUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.zhi.DynamicHeightNavigationBarUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = DynamicHeightNavigationBar;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D9EF2542231383E20004110E /* Build configuration list for PBXProject "DynamicHeightNavigationBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9EF256F231383E40004110E /* Debug */,
+				D9EF2570231383E40004110E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9EF2571231383E40004110E /* Build configuration list for PBXNativeTarget "DynamicHeightNavigationBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9EF2572231383E40004110E /* Debug */,
+				D9EF2573231383E40004110E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9EF2574231383E40004110E /* Build configuration list for PBXNativeTarget "DynamicHeightNavigationBarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9EF2575231383E40004110E /* Debug */,
+				D9EF2576231383E40004110E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D9EF2577231383E40004110E /* Build configuration list for PBXNativeTarget "DynamicHeightNavigationBarUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D9EF2578231383E40004110E /* Debug */,
+				D9EF2579231383E40004110E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D9EF253F231383E20004110E /* Project object */;
+}
