@@ -14,6 +14,8 @@ class FirstViewController: DynamicNavigationRootViewController {
     
     private let tableView = UITableView(frame: .zero, style: .plain)
     
+    private let searchController = UISearchController(searchResultsController: nil)
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +33,6 @@ extension FirstViewController {
         
         setupNavBar()
         setupTableView()
-        print("--------")
     }
     
     private func setupNavBar() {
@@ -41,6 +42,9 @@ extension FirstViewController {
         navigationItem.rightBarButtonItem = pushItem
         
         navigationContentView = datePicker
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.searchController = searchController
     }
     
     private func setupTableView() {

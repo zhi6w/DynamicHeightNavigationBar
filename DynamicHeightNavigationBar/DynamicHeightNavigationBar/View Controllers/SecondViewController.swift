@@ -65,7 +65,7 @@ extension SecondViewController {
     
     private func loadData() {
         
-        let weekTitles = Calendar.current.veryShortWeekdaySymbols
+        let weekTitles = Calendar.current.shortWeekdaySymbols
         
         let items = weekTitles.enumerated().compactMap { (value) -> [UIBarButtonItem]? in
             let button = UIButton()
