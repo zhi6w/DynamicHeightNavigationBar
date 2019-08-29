@@ -69,6 +69,12 @@ extension SecondViewController {
         
         let items = weekTitles.enumerated().compactMap { (value) -> [UIBarButtonItem]? in
             let button = UIButton()
+            
+            if #available(iOS 13.0, *) {
+                // 当用户使用大字体时，长按会弹出放大展示。
+                button.showsLargeContentViewer = true
+            }
+            
             button.setTitle(value.element, for: .normal)
             button.setTitleColor(UIColor.black, for: .normal)
             

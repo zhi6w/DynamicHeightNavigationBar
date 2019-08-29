@@ -36,6 +36,8 @@ open class DynamicNavigationBar: UINavigationBar {
     
     open var contentViewHeightLayoutConstraint: NSLayoutConstraint?
     
+    private var effectViewTopLayoutConstraint: NSLayoutConstraint?
+    
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -53,6 +55,8 @@ open class DynamicNavigationBar: UINavigationBar {
         super.layoutSubviews()
         
         sendSubviewToBack(effectView)
+        
+        effectViewTopLayoutConstraint?.constant = -UIApplication.shared.statusBarFrame.height
     }
     
     open override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
@@ -134,11 +138,13 @@ extension DynamicNavigationBar {
         insertSubview(effectView, at: 0)
         
         effectView.translatesAutoresizingMaskIntoConstraints = false
+                
+        effectViewTopLayoutConstraint = NSLayoutConstraint(item: effectView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: -UIApplication.shared.statusBarFrame.height)
         
         NSLayoutConstraint.activate([
             effectView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
             effectView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
-            effectView.topAnchor.constraint(equalTo: self.topAnchor, constant: -UIApplication.shared.statusBarFrame.height),
+            effectViewTopLayoutConstraint!,
             effectView.bottomAnchor.constraint(equalTo: separator.bottomAnchor, constant: 0),
         ])
     }
