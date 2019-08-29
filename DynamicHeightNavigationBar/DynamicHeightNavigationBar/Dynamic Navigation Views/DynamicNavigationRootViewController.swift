@@ -10,9 +10,10 @@ import UIKit
 
 open class DynamicNavigationRootViewController: UIViewController {
     
-    open override var navigationController: DynamicNavigationController? {
+    open override var navigationController: UINavigationController? {
                         
-        guard let navigationController = super.navigationController as? DynamicNavigationController else { return nil }
+        guard let navigationController = super.navigationController as? DynamicNavigationController
+            else { return super.navigationController }
 
         return navigationController
     }
@@ -62,3 +63,4 @@ extension DynamicNavigationRootViewController {
     }
     
 }
+
