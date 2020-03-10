@@ -54,8 +54,12 @@ open class DynamicNavigationBar: UINavigationBar {
     override open func layoutSubviews() {
         super.layoutSubviews()
         
-        sendSubviewToBack(effectView)
+//        print(self.items?.first?.searchController?.searchBar.superview?.superview)
         
+//        let searchBar = self.items?.first?.searchController?.searchBar
+                
+        sendSubviewToBack(effectView)
+                
         effectViewTopLayoutConstraint?.constant = -UIApplication.shared.statusBarFrame.height
     }
     
@@ -134,7 +138,7 @@ extension DynamicNavigationBar {
         } else {
             effectView.effect = UIBlurEffect(style: .extraLight)
         }
-
+        
         insertSubview(effectView, at: 0)
         
         effectView.translatesAutoresizingMaskIntoConstraints = false
@@ -160,6 +164,8 @@ extension DynamicNavigationBar {
     }
     
     open func addContentSubview(_ view: UIView) {
+        
+//        print(self.items?.first?.searchController)
         
         contentView.addSubview(view)
         
