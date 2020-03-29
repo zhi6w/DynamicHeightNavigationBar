@@ -114,7 +114,7 @@ extension FirstViewController {
     @objc private func push() {
         
         let secondVC = SecondViewController()
-        
+                
         navigationController?.pushViewController(secondVC, animated: true)
     }
     

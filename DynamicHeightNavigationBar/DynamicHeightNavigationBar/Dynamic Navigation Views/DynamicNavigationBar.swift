@@ -20,8 +20,9 @@ open class DynamicNavigationBar: UINavigationBar {
     
     public let contentView = UIView()
     
+    /// NavgationBar 分割线
     private let separator = UIView()
-    
+        
     open var separatorColor: UIColor? {
         didSet {
             separator.backgroundColor = separatorColor
@@ -53,10 +54,6 @@ open class DynamicNavigationBar: UINavigationBar {
     
     override open func layoutSubviews() {
         super.layoutSubviews()
-        
-//        print(self.items?.first?.searchController?.searchBar.superview?.superview)
-        
-//        let searchBar = self.items?.first?.searchController?.searchBar
                 
         sendSubviewToBack(effectView)
                 
@@ -117,7 +114,7 @@ extension DynamicNavigationBar {
         } else {
             separator.backgroundColor = #colorLiteral(red: 0.7019607843, green: 0.7019607843, blue: 0.7019607843, alpha: 1)
         }
-        
+                
         // separator: 0.23529411764705882 0.23529411764705882 0.2627450980392157 0.29
         // custom: 0.7019608020782471 0.7019608020782471 0.7019608020782471 1.0
 
@@ -144,12 +141,12 @@ extension DynamicNavigationBar {
         effectView.translatesAutoresizingMaskIntoConstraints = false
                 
         effectViewTopLayoutConstraint = NSLayoutConstraint(item: effectView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: -UIApplication.shared.statusBarFrame.height)
-        
+                
         NSLayoutConstraint.activate([
             effectView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
             effectView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
             effectViewTopLayoutConstraint!,
-            effectView.bottomAnchor.constraint(equalTo: separator.bottomAnchor, constant: 0),
+            effectView.bottomAnchor.constraint(equalTo: separator.bottomAnchor, constant: -0.33),
         ])
     }
     

@@ -77,7 +77,7 @@ extension DynamicNavigationController {
         
         guard let navBar = backVC.navigationController?.navigationBar as? DynamicNavigationBar
             else { return }
-                
+        
         contentViewHeightCache[backVC] = navBar.contentView.bounds.height
         
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
