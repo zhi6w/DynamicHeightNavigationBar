@@ -56,7 +56,6 @@ extension FirstViewController {
         navigationContentView = datePicker
         
         navigationController?.navigationBar.prefersLargeTitles = true
-//        navigationItem.searchController = searchController
     }
     
     private func setupTableView() {
