@@ -125,7 +125,7 @@ extension DynamicNavigationBar {
         separator.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
         separator.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
         separator.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-        separator.heightAnchor.constraint(equalToConstant: 0.33).isActive = true
+        separator.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale).isActive = true
     }
     
     private func setupEffectView() {
@@ -146,7 +146,7 @@ extension DynamicNavigationBar {
             effectView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
             effectView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
             effectViewTopLayoutConstraint!,
-            effectView.bottomAnchor.constraint(equalTo: separator.bottomAnchor, constant: -0.33),
+            effectView.bottomAnchor.constraint(equalTo: separator.bottomAnchor, constant: -1 / UIScreen.main.scale),
         ])
     }
     
