@@ -109,23 +109,18 @@ extension DynamicNavigationBar {
         
     private func setupSeparatorView() {
         
-        if #available(iOS 13.0, *) {
-            separator.backgroundColor = UIColor(named: "NavigationBarSeparatorColor")
-        } else {
-            separator.backgroundColor = #colorLiteral(red: 0.7019607843, green: 0.7019607843, blue: 0.7019607843, alpha: 1)
-        }
-                
-        // separator: 0.23529411764705882 0.23529411764705882 0.2627450980392157 0.29
-        // custom: 0.7019608020782471 0.7019608020782471 0.7019608020782471 1.0
+        separator.backgroundColor = UIColor.shadowColor
 
         addSubview(separator)
         
         separator.translatesAutoresizingMaskIntoConstraints = false
-        
-        separator.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0).isActive = true
-        separator.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0).isActive = true
-        separator.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0).isActive = true
-        separator.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale).isActive = true
+                
+        NSLayoutConstraint.activate([
+            separator.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
+            separator.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
+            separator.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            separator.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
+        ])
     }
     
     private func setupEffectView() {
@@ -140,13 +135,20 @@ extension DynamicNavigationBar {
         
         effectView.translatesAutoresizingMaskIntoConstraints = false
                 
-        effectViewTopLayoutConstraint = NSLayoutConstraint(item: effectView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: -UIApplication.shared.statusBarFrame.height)
+        var constant: CGFloat = 0
+        if #available(iOS 13.0, *) {
+            constant = -(UIApplication.shared.statusBarManager?.statusBarFrame.height ?? 0)
+        } else {
+            constant = -UIApplication.shared.statusBarFrame.height
+        }
+        
+        effectViewTopLayoutConstraint = NSLayoutConstraint(item: effectView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: constant)
                 
         NSLayoutConstraint.activate([
             effectView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
             effectView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
             effectViewTopLayoutConstraint!,
-            effectView.bottomAnchor.constraint(equalTo: separator.bottomAnchor, constant: -1 / UIScreen.main.scale),
+            effectView.bottomAnchor.constraint(equalTo: separator.bottomAnchor, constant: -1 / UIScreen.main.scale)
         ])
     }
     
@@ -161,9 +163,7 @@ extension DynamicNavigationBar {
     }
     
     open func addContentSubview(_ view: UIView) {
-        
-//        print(self.items?.first?.searchController)
-        
+                
         contentView.addSubview(view)
         
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -171,6 +171,37 @@ extension DynamicNavigationBar {
         view.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0).isActive = true
         view.rightAnchor.constraint(equalTo:contentView.rightAnchor, constant: 0).isActive = true
         view.heightAnchor.constraint(equalToConstant: view.bounds.height).isActive = true
+    }
+    
+}
+
+fileprivate extension UIColor {
+    
+    /// 分割线颜色
+    static var shadowColor: UIColor {
+        if #available(iOS 13.0, *) {
+            return UIColor { (traitCollection) -> UIColor in
+                if traitCollection.userInterfaceStyle == .dark {
+                    return UIColor(white: 1, alpha: 0.15)
+                } else {
+                    return UIColor(white: 0, alpha: 0.3)
+                }
+            }
+        } else {
+            return UIColor(white: 0, alpha: 0.3)
+        }
+    }
+    
+}
+
+fileprivate extension UIApplication {
+    
+    @available(iOS 13.0, *)
+    var statusBarManager: UIStatusBarManager? {
+        
+        let keyWindow = UIApplication.shared.windows.first(where: { $0.isKeyWindow })
+        
+        return keyWindow?.windowScene?.statusBarManager
     }
     
 }
