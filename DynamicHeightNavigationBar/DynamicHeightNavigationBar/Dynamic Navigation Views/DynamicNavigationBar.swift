@@ -100,9 +100,9 @@ extension DynamicNavigationBar {
         contentViewHeightLayoutConstraint = NSLayoutConstraint(item: contentView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 0)
         
         NSLayoutConstraint.activate([
-            contentView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
-            contentView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
-            contentView.topAnchor.constraint(equalTo: self.bottomAnchor, constant: 0),
+            contentView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            contentView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            contentView.topAnchor.constraint(equalTo: self.bottomAnchor),
             contentViewHeightLayoutConstraint!
         ])
     }
@@ -116,9 +116,9 @@ extension DynamicNavigationBar {
         separator.translatesAutoresizingMaskIntoConstraints = false
                 
         NSLayoutConstraint.activate([
-            separator.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
-            separator.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
-            separator.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
+            separator.leftAnchor.constraint(equalTo: self.leftAnchor),
+            separator.rightAnchor.constraint(equalTo: self.rightAnchor),
+            separator.topAnchor.constraint(equalTo: contentView.bottomAnchor),
             separator.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
         ])
     }
@@ -145,10 +145,10 @@ extension DynamicNavigationBar {
         effectViewTopLayoutConstraint = NSLayoutConstraint(item: effectView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: constant)
                 
         NSLayoutConstraint.activate([
-            effectView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 0),
-            effectView.rightAnchor.constraint(equalTo: self.rightAnchor, constant: 0),
+            effectView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            effectView.rightAnchor.constraint(equalTo: self.rightAnchor),
             effectViewTopLayoutConstraint!,
-            effectView.bottomAnchor.constraint(equalTo: separator.bottomAnchor, constant: -1 / UIScreen.main.scale)
+            effectView.bottomAnchor.constraint(equalTo: separator.topAnchor)
         ])
     }
     
@@ -163,14 +163,16 @@ extension DynamicNavigationBar {
     }
     
     open func addContentSubview(_ view: UIView) {
-                
+        
         contentView.addSubview(view)
         
         view.translatesAutoresizingMaskIntoConstraints = false
         
-        view.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 0).isActive = true
-        view.rightAnchor.constraint(equalTo:contentView.rightAnchor, constant: 0).isActive = true
-        view.heightAnchor.constraint(equalToConstant: view.bounds.height).isActive = true
+        NSLayoutConstraint.activate([
+            view.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            view.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            view.heightAnchor.constraint(equalToConstant: view.bounds.height)
+        ])
     }
     
 }

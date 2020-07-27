@@ -26,12 +26,12 @@ extension FourthViewController {
     private func setupInterface() {
         view.backgroundColor = .green
         title = "Fourth"
-        
+
         setupNavBar()
     }
     
     private func setupNavBar() {
-        
+                                
         seg.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 31)
         
         seg.insertSegment(withTitle: "First", at: 0, animated: false)
