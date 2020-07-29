@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
 
-        let mainVC = FirstViewController()
+        let mainVC = ZeroViewController()
         let navController = DynamicNavigationController(navigationBarClass:DynamicNavigationBar.self, toolbarClass: nil, rootViewController: mainVC)
         
         window?.rootViewController = navController

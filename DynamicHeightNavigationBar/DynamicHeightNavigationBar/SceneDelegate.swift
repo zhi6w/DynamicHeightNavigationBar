@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
 
-        let mainVC = FirstViewController()
+        let mainVC = ZeroViewController()
         let navController = DynamicNavigationController(navigationBarClass: DynamicNavigationBar.self, toolbarClass: nil, rootViewController: mainVC)
         
         window?.rootViewController = navController

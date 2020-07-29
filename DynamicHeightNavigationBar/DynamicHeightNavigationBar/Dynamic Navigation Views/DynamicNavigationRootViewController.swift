@@ -32,7 +32,7 @@ open class DynamicNavigationRootViewController: UIViewController {
         super.viewWillAppear(animated)
         
         navigationContentView?.layoutIfNeeded()
-                
+                        
         guard let navBar = navigationController?.navigationBar as? DynamicNavigationBar else { return }
                         
         navBar.setContentViewHeight(navigationContentView?.bounds.height ?? 0)

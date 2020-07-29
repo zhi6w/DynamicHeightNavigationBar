@@ -1,18 +1,16 @@
 //
-//  FourthViewController.swift
+//  ZeroViewController.swift
 //  DynamicHeightNavigationBar
 //
-//  Created by Zhi Zhou on 2019/8/26.
-//  Copyright © 2019 Zhi Zhou. All rights reserved.
+//  Created by Zhi Zhou on 2020/7/29.
+//  Copyright © 2020 Zhi Zhou. All rights reserved.
 //
 
 import UIKit
 
-class FourthViewController: DynamicNavigationRootViewController {
+class ZeroViewController: UIViewController {
     
-    private let seg = UISegmentedControl()
-    
-    private let tableView = UITableView(frame: .zero, style: .plain)
+    private let tableView = UITableView()
     
 
     override func viewDidLoad() {
@@ -23,35 +21,36 @@ class FourthViewController: DynamicNavigationRootViewController {
 
 }
 
-extension FourthViewController {
+extension ZeroViewController {
     
     private func setupInterface() {
-        view.backgroundColor = .green
-        title = "Fourth"
-
+        
+        title = "Zero"
+        view.backgroundColor = .purple
+        
         setupNavBar()
         setupTableView()
     }
     
     private func setupNavBar() {
-                                
-        seg.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 31)
         
-        seg.insertSegment(withTitle: "First", at: 0, animated: false)
-        seg.insertSegment(withTitle: "Second", at: 1, animated: false)
-        
-        seg.selectedSegmentIndex = 1
-        
-        navigationContentView = seg
-        
-        
+        // 修复在 iOS 13 下，滑动返回取消后，navigationItem 中的 UIBarButtonItem 图标透明度变淡的问题。
         if #available(iOS 13.0, *) {
-            let backToRootVCItem = UIBarButtonItem(image: UIImage(systemName: "backward.end.alt.fill"), style: .plain, target: self, action: #selector(backToRootViewController(_:)))
-                        
-            navigationItem.rightBarButtonItems = [backToRootVCItem]
+            let image = UIImage(systemName: "play.fill")
+            let pushButton = UIButton(type: .system)
+            pushButton.setImage(image, for: .normal)
+            pushButton.addTarget(self, action: #selector(push(_:)), for: .touchUpInside)
+            
+            let pushItem = UIBarButtonItem(customView: pushButton)
+            
+            navigationItem.rightBarButtonItem = pushItem
+        } else {
+            let pushItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(push(_:)))
+            
+            navigationItem.rightBarButtonItem = pushItem
         }
     }
-
+    
     private func setupTableView() {
         
         tableView.dataSource = self
@@ -76,7 +75,7 @@ extension FourthViewController {
     
 }
 
-extension FourthViewController: UITableViewDataSource, UITableViewDelegate {
+extension ZeroViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 50
@@ -97,14 +96,14 @@ extension FourthViewController: UITableViewDataSource, UITableViewDelegate {
     
 }
 
-extension FourthViewController {
+extension ZeroViewController {
     
-    @objc private func backToRootViewController(_ item: UIBarButtonItem) {
-        navigationController?.popToRootViewController(animated: true)
+    @objc private func push(_ item: UIBarButtonItem) {
+        let firstVC = FirstViewController()
+        navigationController?.pushViewController(firstVC, animated: true)
     }
-        
+    
 }
-
 
 
 

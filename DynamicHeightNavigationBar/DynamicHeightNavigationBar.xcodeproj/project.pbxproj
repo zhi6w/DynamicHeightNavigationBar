@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9CCB84824D15F050041D601 /* ZeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCB84724D15F050041D601 /* ZeroViewController.swift */; };
 		D9EF254B231383E20004110E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF254A231383E20004110E /* AppDelegate.swift */; };
 		D9EF254D231383E20004110E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF254C231383E20004110E /* SceneDelegate.swift */; };
 		D9EF2552231383E20004110E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9EF2550231383E20004110E /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D9CCB84724D15F050041D601 /* ZeroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroViewController.swift; sourceTree = "<group>"; };
 		D9EF2547231383E20004110E /* DynamicHeightNavigationBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicHeightNavigationBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EF254A231383E20004110E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9EF254C231383E20004110E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D973E51424D005E800218C21 /* Class Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Class Extensions";
+			sourceTree = "<group>";
+		};
 		D9EF253E231383E20004110E = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +124,7 @@
 				D9EF254C231383E20004110E /* SceneDelegate.swift */,
 				D9EF2585231384650004110E /* View Controllers */,
 				D9EF258823139EDC0004110E /* Dynamic Navigation Views */,
+				D973E51424D005E800218C21 /* Class Extensions */,
 				D9EF257B231384140004110E /* Supporting Files */,
 			);
 			path = DynamicHeightNavigationBar;
@@ -152,6 +162,7 @@
 		D9EF2585231384650004110E /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D9CCB84724D15F050041D601 /* ZeroViewController.swift */,
 				D9EF257C231384330004110E /* FirstViewController.swift */,
 				D9EF257E2313843E0004110E /* SecondViewController.swift */,
 				D9EF25802313844D0004110E /* ThirdViewController.swift */,
@@ -301,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9CCB84824D15F050041D601 /* ZeroViewController.swift in Sources */,
 				D9EF25832313845B0004110E /* FourthViewController.swift in Sources */,
 				D9EF257F2313843E0004110E /* SecondViewController.swift in Sources */,
 				D9EF257D231384330004110E /* FirstViewController.swift in Sources */,

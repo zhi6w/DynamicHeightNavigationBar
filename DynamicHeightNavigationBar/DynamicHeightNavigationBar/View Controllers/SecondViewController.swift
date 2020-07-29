@@ -12,6 +12,8 @@ class SecondViewController: DynamicNavigationRootViewController {
     
     private let toolbar = UIToolbar()
     
+    private let tableView = UITableView(frame: .zero, style: .plain)
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,7 @@ extension SecondViewController {
         
         setupNavBar()
         setupNavgationContentView()
+        setupTableView()
     }
     
     private func setupNavBar() {
@@ -53,14 +56,58 @@ extension SecondViewController {
     
     private func setupNavgationContentView() {
 
-        toolbar.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 30)
+        toolbar.frame = CGRect(x: 0, y: 0, width: 0, height: 30)
         toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
         toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         
         navigationContentView = toolbar
     }
     
+    private func setupTableView() {
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "\(UITableViewCell.self)")
+        
+        tableView.tableFooterView = UIView()
+        tableView.backgroundColor = .clear
+        
+        view.addSubview(tableView)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            tableView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 0),
+            tableView.rightAnchor.constraint(equalTo: view.rightAnchor, constant: 0),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0),
+        ])
+    }
+    
 }
+
+extension SecondViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)", for: indexPath)
+        
+        cell.textLabel?.text = "\(indexPath.row)"
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+}
+
 
 extension SecondViewController {
     
