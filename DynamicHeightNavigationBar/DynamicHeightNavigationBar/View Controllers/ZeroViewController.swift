@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ZeroViewController: UIViewController {
+class ZeroViewController: DynamicNavigationRootViewController {
     
     private let tableView = UITableView()
     

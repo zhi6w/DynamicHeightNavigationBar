@@ -90,13 +90,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D973E51424D005E800218C21 /* Class Extensions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Class Extensions";
-			sourceTree = "<group>";
-		};
 		D9EF253E231383E20004110E = {
 			isa = PBXGroup;
 			children = (
@@ -124,7 +117,6 @@
 				D9EF254C231383E20004110E /* SceneDelegate.swift */,
 				D9EF2585231384650004110E /* View Controllers */,
 				D9EF258823139EDC0004110E /* Dynamic Navigation Views */,
-				D973E51424D005E800218C21 /* Class Extensions */,
 				D9EF257B231384140004110E /* Supporting Files */,
 			);
 			path = DynamicHeightNavigationBar;

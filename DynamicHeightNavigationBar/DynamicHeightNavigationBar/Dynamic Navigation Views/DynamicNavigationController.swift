@@ -81,7 +81,7 @@ extension DynamicNavigationController {
             contentViewHeightCache[visiblePushedViewController] = navBar.bounds.height
             return
         }
-                                
+                 
         contentViewHeightCache[visiblePushedVC] = navBar.contentView.bounds.height
                         
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
@@ -108,6 +108,10 @@ extension DynamicNavigationController {
 
         let height = contentViewHeightCache[visiblePushedViewController] ?? 0
         
+        if !topViewController.isKind(of: DynamicNavigationRootViewController.self) {
+            navBar.setContentViewHeight(0)
+        }
+        
         switch interactivePopGestureRecognizer?.state {
         case .began:
             // 滑动返回
@@ -119,7 +123,7 @@ extension DynamicNavigationController {
                                     
             popViewController = topViewController
             pushedViewController = visiblePushedViewController
-            
+                                    
         case .possible:
             // 点击返回
             
@@ -339,7 +343,7 @@ extension DynamicNavigationController {
 
         // 滑动返回时，将要显示的视图渐渐显现。
         pushedVC?.navigationContentView?.alpha = factor
-        
+                
         switch gr.state {
         case .ended:
             guard navBar.contentView.subviews.count > 1 else { return }
@@ -353,7 +357,7 @@ extension DynamicNavigationController {
             } else {
                 // 滑动未超过屏幕宽度的一半，取消滑动返回。
                 popVC?.navigationContentView?.alpha = 1
-                pushedVC?.navigationContentView?.alpha = 0
+                pushedVC?.navigationContentView?.alpha = 0                              
             }
 
         default:

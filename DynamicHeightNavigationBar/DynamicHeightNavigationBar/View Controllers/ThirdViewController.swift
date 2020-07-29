@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ThirdViewController: UIViewController {
+class ThirdViewController: DynamicNavigationRootViewController {
     
     private let tableView = UITableView(frame: .zero, style: .plain)
     
@@ -19,17 +19,12 @@ class ThirdViewController: UIViewController {
         setupInterface()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-//        (navigationController?.navigationBar as? DynamicNavigationBar)?.setContentViewHeight(0)
-    }
-
 }
 
 extension ThirdViewController {
     
     private func setupInterface() {
+        
         view.backgroundColor = .cyan
         title = "Third"
                 
@@ -115,12 +110,10 @@ extension ThirdViewController {
     
     @objc private func replaceViewControllers(_ item: UIBarButtonItem) {
                 
-        let vcs = [FourthViewController(), UIViewController(), ThirdViewController()]
-
+        let vcs = [FourthViewController(), DynamicNavigationRootViewController(), ThirdViewController()]
         navigationController?.setViewControllers(vcs, animated: true)
         
 //        let vc = navigationController?.viewControllers[1] ?? UIViewController()
-//
 //        navigationController?.popToViewController(vc, animated: true)
     }
     
