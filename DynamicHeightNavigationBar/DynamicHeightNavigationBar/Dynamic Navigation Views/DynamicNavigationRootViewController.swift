@@ -30,17 +30,21 @@ open class DynamicNavigationRootViewController: UIViewController {
 
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+       
+        guard let navigationController = navigationController as? DynamicNavigationController else { return }
         
+        // 根据滑动返回手势是否完成，来设定 navigationContentView 的透明度。
+        // 以此在进行 push 操作时，下一个 VC 的 navigationContentView 渐渐动画显现。
+        navigationContentView?.alpha = navigationController.isEndingInteractivePopGestureRecognizer ? 0 : 1
+                
         navigationContentView?.layoutIfNeeded()
-                        
-        guard let navBar = navigationController?.navigationBar as? DynamicNavigationBar else { return }
-                        
-        navBar.setContentViewHeight(navigationContentView?.bounds.height ?? 0)
+                                                        
+        navigationBar?.setContentViewHeight(navigationContentView?.bounds.height ?? 0)
     }
     
     open override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-                
+        
         setupNavigationContentView()
     }
     

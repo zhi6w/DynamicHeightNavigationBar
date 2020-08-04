@@ -14,6 +14,8 @@ class SecondViewController: DynamicNavigationRootViewController {
     
     private let tableView = UITableView(frame: .zero, style: .plain)
     
+    private var isExpanded = false
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +48,9 @@ extension SecondViewController {
             
             let pushItem = UIBarButtonItem(customView: pushButton)
             
-            navigationItem.rightBarButtonItem = pushItem
+            let changeHeightItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(changeHeight(_:)))
+            
+            navigationItem.rightBarButtonItems = [pushItem, changeHeightItem]
         } else {
             let pushItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(push))
             
@@ -116,6 +120,16 @@ extension SecondViewController {
         let thirdVC = ThirdViewController()
         
         navigationController?.pushViewController(thirdVC, animated: true)
+    }
+    
+    @objc private func changeHeight(_ item: UIBarButtonItem) {
+
+        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
+            self.navigationBar?.setContentViewHeight(self.isExpanded ? self.toolbar.bounds.height : 100)
+            self.navigationBar?.layoutIfNeeded()
+        }, completion: { (_) in
+            self.isExpanded.toggle()
+        })
     }
     
 }

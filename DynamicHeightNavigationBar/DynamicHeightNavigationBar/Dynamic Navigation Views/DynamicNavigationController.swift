@@ -18,7 +18,7 @@ open class DynamicNavigationController: UINavigationController {
     /// 返回时，消失的那个 View Controller。
     private var popViewController: UIViewController?
 
-    open var animationDuration: TimeInterval = 0.25
+    open var animationDuration: TimeInterval = 0.35
         
     /// 根视图控制器
     open var rootViewController: UIViewController? {
@@ -35,10 +35,13 @@ open class DynamicNavigationController: UINavigationController {
         return viewControllers[index]
     }
     
+    /// 是否完成了滑动返回手势
+    open var isEndingInteractivePopGestureRecognizer = true
+    
         
     convenience public init(navigationBarClass: AnyClass?, toolbarClass: AnyClass?, rootViewController: UIViewController) {
         self.init(navigationBarClass: navigationBarClass, toolbarClass: toolbarClass)
-                
+        
         self.viewControllers = [rootViewController]
     }
     
@@ -58,6 +61,9 @@ extension DynamicNavigationController {
         navigationBar.setBackgroundImage(UIImage(), for: .default)
                 
         // Optional(<UIScreenEdgePanGestureRecognizer: 0x7fc83df02e40; state = Possible; delaysTouchesBegan = YES; view = <UILayoutContainerView 0x7fc83df01ca0>; target= <(action=handleNavigationTransition:, target=<_UINavigationInteractiveTransition 0x7fc83df02d00>)>>)
+//        print(transitionCoordinator?.transitionDuration, "--<")
+        
+        delegate = self
         
         interactivePopGestureRecognizer?.addTarget(self, action: #selector(handleTransition(_:)))
     }
@@ -69,9 +75,14 @@ extension DynamicNavigationController {
     // MARK: - push
     override open func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)
+        
+        isEndingInteractivePopGestureRecognizer = true
+        
+        // 获取系统默认转场动画时长
+        animationDuration = transitionCoordinator?.transitionDuration ?? 0.35
                 
         guard let navBar = navigationBar as? DynamicNavigationBar else { return }
-        
+                
         guard let visiblePushedViewController = visiblePushedViewController, let topViewController = topViewController else { return }
         
         // visiblePushedVC：即将消失的那个视图控制器
@@ -83,11 +94,10 @@ extension DynamicNavigationController {
         }
                  
         contentViewHeightCache[visiblePushedVC] = navBar.contentView.bounds.height
-                        
+
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
             visiblePushedVC.navigationContentView?.alpha = 0
         }, completion: nil)
-        
         
         if !topViewController.isKind(of: DynamicNavigationRootViewController.self) {
             // push 到的 View Controller 不是 DynamicNavigationRootViewController 类型，则设定 navBar 高度为默认值。
@@ -126,6 +136,8 @@ extension DynamicNavigationController {
                                     
         case .possible:
             // 点击返回
+            
+            isEndingInteractivePopGestureRecognizer = true
             
             // visiblePushedVC：点击返回时显示的那个视图控制器
             // 如果 visiblePushedVC 不是 DynamicNavigationRootViewController 类型，则返回 nil。
@@ -168,6 +180,8 @@ extension DynamicNavigationController {
     }
     
     open override func popToViewController(_ viewController: UIViewController, animated: Bool) -> [UIViewController]? {
+        
+        isEndingInteractivePopGestureRecognizer = true
         
         guard let navBar = navigationBar as? DynamicNavigationBar else {
             return super.popToViewController(viewController, animated: animated)
@@ -219,6 +233,8 @@ extension DynamicNavigationController {
     
     open override func popToRootViewController(animated: Bool) -> [UIViewController]? {
         
+        isEndingInteractivePopGestureRecognizer = true
+        
         guard let navBar = navigationBar as? DynamicNavigationBar else {
             return super.popToRootViewController(animated: animated)
         }
@@ -269,6 +285,8 @@ extension DynamicNavigationController {
     // MARK: - setViewControllers
     open override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
         super.setViewControllers(viewControllers, animated: animated)
+        
+        isEndingInteractivePopGestureRecognizer = true
         
         guard let navBar = navigationBar as? DynamicNavigationBar else { return }
         
@@ -354,18 +372,34 @@ extension DynamicNavigationController {
             if popX > 0 {
                 popVC?.navigationContentView?.alpha = 0
                 pushedVC?.navigationContentView?.alpha = 1
+                isEndingInteractivePopGestureRecognizer = true
             } else {
                 // 滑动未超过屏幕宽度的一半，取消滑动返回。
                 popVC?.navigationContentView?.alpha = 1
-                pushedVC?.navigationContentView?.alpha = 0                              
+                pushedVC?.navigationContentView?.alpha = 0
+                isEndingInteractivePopGestureRecognizer = false
             }
+            
+            self.popViewController = nil
+            self.pushedViewController = nil
 
         default:
             break
         }
-        
-        
     }
     
 }
 
+extension DynamicNavigationController: UINavigationControllerDelegate {
+    
+    public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+                
+        guard let vc = viewController as? DynamicNavigationRootViewController else { return }
+
+        // 动画渐渐显现 push 到的页面的 navigationContentView。而非直接生硬的显示。
+        UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
+            vc.navigationContentView?.alpha = 1
+        }, completion: nil)
+    }
+    
+}
