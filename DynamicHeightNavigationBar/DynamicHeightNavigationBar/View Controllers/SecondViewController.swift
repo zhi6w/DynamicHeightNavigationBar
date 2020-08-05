@@ -16,10 +16,18 @@ class SecondViewController: DynamicNavigationRootViewController {
     
     private var isExpanded = false
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        print("will appear")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("did load")
+        
         loadData()
         setupInterface()
     }

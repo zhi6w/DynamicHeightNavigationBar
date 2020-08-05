@@ -59,11 +59,10 @@ extension DynamicNavigationController {
         
         navigationBar.shadowImage = UIImage()
         navigationBar.setBackgroundImage(UIImage(), for: .default)
-                
-        // Optional(<UIScreenEdgePanGestureRecognizer: 0x7fc83df02e40; state = Possible; delaysTouchesBegan = YES; view = <UILayoutContainerView 0x7fc83df01ca0>; target= <(action=handleNavigationTransition:, target=<_UINavigationInteractiveTransition 0x7fc83df02d00>)>>)
-//        print(transitionCoordinator?.transitionDuration, "--<")
         
         delegate = self
+        
+        // Optional(<UIScreenEdgePanGestureRecognizer: 0x7fc83df02e40; state = Possible; delaysTouchesBegan = YES; view = <UILayoutContainerView 0x7fc83df01ca0>; target= <(action=handleNavigationTransition:, target=<_UINavigationInteractiveTransition 0x7fc83df02d00>)>>)
         
         interactivePopGestureRecognizer?.addTarget(self, action: #selector(handleTransition(_:)))
     }
@@ -97,7 +96,9 @@ extension DynamicNavigationController {
 
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
             visiblePushedVC.navigationContentView?.alpha = 0
-        }, completion: nil)
+        }, completion: { _ in
+//            visiblePushedVC.navigationContentView?.removeFromSuperview()
+        })
         
         if !topViewController.isKind(of: DynamicNavigationRootViewController.self) {
             // push 到的 View Controller 不是 DynamicNavigationRootViewController 类型，则设定 navBar 高度为默认值。
@@ -373,6 +374,11 @@ extension DynamicNavigationController {
                 popVC?.navigationContentView?.alpha = 0
                 pushedVC?.navigationContentView?.alpha = 1
                 isEndingInteractivePopGestureRecognizer = true
+                
+                /* 这里移除“关闭的那个视图控制器”的 contentView。
+                   是为了防止 contentView 重复在 DynamicNavigationRootViewController 的 viewWillLayoutSubviews 方法内创建。
+                 */
+                popVC?.navigationContentView?.removeFromSuperview()
             } else {
                 // 滑动未超过屏幕宽度的一半，取消滑动返回。
                 popVC?.navigationContentView?.alpha = 1
@@ -382,7 +388,7 @@ extension DynamicNavigationController {
             
             self.popViewController = nil
             self.pushedViewController = nil
-
+            
         default:
             break
         }
