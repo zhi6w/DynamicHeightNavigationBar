@@ -49,8 +49,9 @@ extension ThirdViewController {
             
         } else {
             let pushItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(push))
+            let replaceVCsItem = UIBarButtonItem(title: "Replace", style: .plain, target: self, action: #selector(replaceViewControllers(_:)))
             
-            navigationItem.rightBarButtonItem = pushItem
+            navigationItem.rightBarButtonItems = [pushItem, replaceVCsItem]
         }
     }
     

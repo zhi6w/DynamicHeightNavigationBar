@@ -42,13 +42,17 @@ extension FourthViewController {
         
         seg.selectedSegmentIndex = 1
         
-        navigationContentView = seg
+        setNavigationBarContentView(seg)
         
         
         if #available(iOS 13.0, *) {
             let backToRootVCItem = UIBarButtonItem(image: UIImage(systemName: "backward.end.alt.fill"), style: .plain, target: self, action: #selector(backToRootViewController(_:)))
                         
-            navigationItem.rightBarButtonItems = [backToRootVCItem]
+            navigationItem.rightBarButtonItem = backToRootVCItem
+        } else {
+            let backToRootVCItem = UIBarButtonItem(title: "BackToRoot", style: .plain, target: self, action: #selector(backToRootViewController(_:)))
+                        
+            navigationItem.rightBarButtonItem = backToRootVCItem
         }
     }
 

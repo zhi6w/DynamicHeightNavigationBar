@@ -166,7 +166,7 @@ extension DynamicNavigationBar {
         contentView.addSubview(view)
         
         view.translatesAutoresizingMaskIntoConstraints = false
-        
+
         NSLayoutConstraint.activate([
             view.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             view.rightAnchor.constraint(equalTo: contentView.rightAnchor),

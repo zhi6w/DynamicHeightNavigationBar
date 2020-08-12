@@ -10,7 +10,6 @@ import UIKit
 
 class FirstViewController: DynamicNavigationRootViewController {
     
-    private let datePickerContentView = UIView()
     private let datePicker = UIDatePicker()
     
     private let tableView = UITableView(frame: .zero, style: .plain)
@@ -53,26 +52,14 @@ extension FirstViewController {
             
             navigationItem.rightBarButtonItem = pushItem
         }
-                
+        
         if #available(iOS 14.0, *) {
             datePicker.preferredDatePickerStyle = .inline
-        }
-        
+        } 
         datePicker.backgroundColor = .clear
-        datePickerContentView.addSubview(datePicker)
-        datePicker.translatesAutoresizingMaskIntoConstraints = false
+                        
+        setNavigationBarContentView(datePicker)
         
-        NSLayoutConstraint.activate([
-            datePicker.centerXAnchor.constraint(equalTo: datePickerContentView.centerXAnchor),
-            datePicker.centerYAnchor.constraint(equalTo: datePickerContentView.centerYAnchor)
-        ])
-        
-        datePicker.layoutIfNeeded()
-        
-        datePickerContentView.frame = CGRect(x: 0, y: 0, width: 0, height: datePicker.bounds.height)
-        
-        navigationContentView = datePickerContentView
-
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     

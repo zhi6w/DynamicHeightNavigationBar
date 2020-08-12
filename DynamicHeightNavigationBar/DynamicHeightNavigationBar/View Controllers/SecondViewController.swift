@@ -14,19 +14,11 @@ class SecondViewController: DynamicNavigationRootViewController {
     
     private let tableView = UITableView(frame: .zero, style: .plain)
     
-    private var isExpanded = false
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    private let seg = UISegmentedControl()
         
-        print("will appear")
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("did load")
         
         loadData()
         setupInterface()
@@ -61,18 +53,24 @@ extension SecondViewController {
             navigationItem.rightBarButtonItems = [pushItem, changeHeightItem]
         } else {
             let pushItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(push))
+            let changeHeightItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(changeHeight(_:)))
             
-            navigationItem.rightBarButtonItem = pushItem
+            navigationItem.rightBarButtonItems = [pushItem, changeHeightItem]
         }
     }
     
     private func setupNavgationContentView() {
 
-        toolbar.frame = CGRect(x: 0, y: 0, width: 0, height: 30)
+        toolbar.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 30)
         toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
         toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         
-        navigationContentView = toolbar
+        seg.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 100)
+        seg.insertSegment(withTitle: "First", at: 0, animated: false)
+        seg.insertSegment(withTitle: "Second", at: 1, animated: false)
+        seg.selectedSegmentIndex = 1
+        
+        setNavigationBarContentView(toolbar, expandedView: seg, mode: .replace)
     }
     
     private func setupTableView() {
@@ -118,6 +116,13 @@ extension SecondViewController: UITableViewDataSource, UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        // 当将要滚动时，紧缩导航栏。
+        if isExpanded {
+            changeNavigationBarActiveDisplayMode()
+        }
+    }
+    
 }
 
 
@@ -131,13 +136,7 @@ extension SecondViewController {
     }
     
     @objc private func changeHeight(_ item: UIBarButtonItem) {
-
-        UIView.animate(withDuration: 0.25, delay: 0, options: .curveEaseInOut, animations: {
-            self.navigationBar?.setContentViewHeight(self.isExpanded ? self.toolbar.bounds.height : 100)
-            self.navigationBar?.layoutIfNeeded()
-        }, completion: { (_) in
-            self.isExpanded.toggle()
-        })
+        changeNavigationBarActiveDisplayMode()
     }
     
 }
