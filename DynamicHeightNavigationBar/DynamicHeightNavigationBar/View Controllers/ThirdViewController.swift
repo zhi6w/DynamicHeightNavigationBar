@@ -12,11 +12,13 @@ class ThirdViewController: DynamicNavigationRootViewController {
     
     private let tableView = UITableView(frame: .zero, style: .plain)
     
+    private let seg = UISegmentedControl()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupInterface()
+        setupInterface()        
     }
     
 }
@@ -33,6 +35,15 @@ extension ThirdViewController {
     }
     
     private func setupNavBar() {
+        
+        seg.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 31)
+        seg.backgroundColor = .green
+        seg.insertSegment(withTitle: "First", at: 0, animated: false)
+        seg.insertSegment(withTitle: "Second", at: 1, animated: false)
+
+        seg.selectedSegmentIndex = 1
+
+        setNavigationBarContentView(seg)
         
         // 修复在 iOS 13 下，滑动返回取消后，navigationItem 中的 UIBarButtonItem 图标透明度变淡的问题。
         if #available(iOS 13.0, *) {
@@ -111,7 +122,7 @@ extension ThirdViewController {
     
     @objc private func replaceViewControllers(_ item: UIBarButtonItem) {
                 
-        let vcs = [FourthViewController(), DynamicNavigationRootViewController(), ThirdViewController()]
+        let vcs = [DynamicNavigationRootViewController(), DynamicNavigationRootViewController(), DynamicNavigationRootViewController()]
         navigationController?.setViewControllers(vcs, animated: true)
         
 //        let vc = navigationController?.viewControllers[1] ?? UIViewController()

@@ -54,8 +54,9 @@ extension FirstViewController {
         }
         
         if #available(iOS 14.0, *) {
-            datePicker.preferredDatePickerStyle = .inline
-        } 
+//            datePicker.preferredDatePickerStyle = .inline
+        }
+        
         datePicker.backgroundColor = .clear
                         
         setNavigationBarContentView(datePicker)

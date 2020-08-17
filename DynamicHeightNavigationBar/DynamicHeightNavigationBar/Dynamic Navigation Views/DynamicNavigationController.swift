@@ -75,7 +75,7 @@ extension DynamicNavigationController {
     // MARK: - push
     override open func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)
-        
+        print("push---")
         isEndingInteractivePopGestureRecognizer = true
         
         // 获取系统默认转场动画时长
@@ -104,10 +104,10 @@ extension DynamicNavigationController {
             navBar.setContentViewHeight(.zero)
         }
     }
-    
+
     // MARK: - pop
     override open func popViewController(animated: Bool) -> UIViewController? {
-        
+        print("pop view controller")
         guard let navBar = navigationBar as? DynamicNavigationBar else {
             return super.popViewController(animated: animated)
         }
@@ -261,8 +261,8 @@ extension DynamicNavigationController {
         
         // rootVC：根视图控制器
         // 如果 rootVC 不是 DynamicNavigationRootViewController 类型，则返回 nil。
-        let rootVC = visiblePushedViewController as? DynamicNavigationRootViewController
-
+        let rootVC = rootViewController as? DynamicNavigationRootViewController
+        
         // 点击返回时，将要隐藏的视图渐渐变淡。
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
             topVC?.navigationBarContentView.alpha = 0
@@ -284,8 +284,19 @@ extension DynamicNavigationController {
     
     // MARK: - setViewControllers
     open override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
-        super.setViewControllers(viewControllers, animated: animated)
+        print("set view controller")
+        // 重新设定 viewControllers 之前已存在的 viewControllers 数组
+        let previousViewControllers = self.viewControllers.compactMap({ $0 as? DynamicNavigationRootViewController })
                 
+        super.setViewControllers(viewControllers, animated: animated)
+        
+        previousViewControllers.forEach { (viewController) in
+            // 除 “新的 rootViewController” 外，原有的 viewController 中的 navigationBarContentView 全部移除。
+            if viewController != rootViewController {
+                viewController.navigationBarContentView.removeFromSuperview()
+            }
+        }
+                        
         isEndingInteractivePopGestureRecognizer = true
         
 //        guard let navBar = navigationBar as? DynamicNavigationBar else { return }
@@ -395,16 +406,21 @@ extension DynamicNavigationController {
     
 }
 
+// MARK: - UINavigationController Delegate
 extension DynamicNavigationController: UINavigationControllerDelegate {
     
     public func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-                
+        print("will show")
         guard let vc = viewController as? DynamicNavigationRootViewController else { return }
 
         // 动画渐渐显现 push 到的页面的 navigationContentView。而非直接生硬的显示。
         UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
             vc.navigationBarContentView.alpha = 1
         }, completion: nil)
+    }
+    
+    public func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        print("did show")
     }
     
 }

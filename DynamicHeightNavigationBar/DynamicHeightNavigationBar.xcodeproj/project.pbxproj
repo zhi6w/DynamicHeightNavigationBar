@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9A9867124EA4CB7008A1EE9 /* DynamicNavigationBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A9867024EA4CB7008A1EE9 /* DynamicNavigationBarContentView.swift */; };
 		D9CCB84824D15F050041D601 /* ZeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCB84724D15F050041D601 /* ZeroViewController.swift */; };
 		D9EF254B231383E20004110E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF254A231383E20004110E /* AppDelegate.swift */; };
 		D9EF254D231383E20004110E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF254C231383E20004110E /* SceneDelegate.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D9A9867024EA4CB7008A1EE9 /* DynamicNavigationBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicNavigationBarContentView.swift; sourceTree = "<group>"; };
 		D9CCB84724D15F050041D601 /* ZeroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroViewController.swift; sourceTree = "<group>"; };
 		D9EF2547231383E20004110E /* DynamicHeightNavigationBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicHeightNavigationBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9EF254A231383E20004110E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				D9EF258B23139F600004110E /* DynamicNavigationController.swift */,
 				D9EF258923139EF20004110E /* DynamicNavigationBar.swift */,
 				D9EF258D23139F940004110E /* DynamicNavigationRootViewController.swift */,
+				D9A9867024EA4CB7008A1EE9 /* DynamicNavigationBarContentView.swift */,
 			);
 			path = "Dynamic Navigation Views";
 			sourceTree = "<group>";
@@ -309,6 +312,7 @@
 				D9EF257F2313843E0004110E /* SecondViewController.swift in Sources */,
 				D9EF257D231384330004110E /* FirstViewController.swift in Sources */,
 				D9EF25812313844D0004110E /* ThirdViewController.swift in Sources */,
+				D9A9867124EA4CB7008A1EE9 /* DynamicNavigationBarContentView.swift in Sources */,
 				D9EF254B231383E20004110E /* AppDelegate.swift in Sources */,
 				D9EF258E23139F940004110E /* DynamicNavigationRootViewController.swift in Sources */,
 				D9EF254D231383E20004110E /* SceneDelegate.swift in Sources */,

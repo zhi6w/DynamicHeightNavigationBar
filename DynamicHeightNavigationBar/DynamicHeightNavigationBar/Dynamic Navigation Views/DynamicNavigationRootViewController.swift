@@ -17,7 +17,7 @@ open class DynamicNavigationRootViewController: UIViewController {
         return navigationBar
     }
     
-    public let navigationBarContentView = UIView()
+    public let navigationBarContentView = DynamicNavigationBarContentView()
     
     /// 导航栏自定义内容视图的显示模式
     public enum NavigationBarContentViewDistributionMode: Int, CaseIterable {
