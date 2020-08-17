@@ -173,7 +173,7 @@ extension DynamicNavigationBar {
             view.heightAnchor.constraint(equalToConstant: view.bounds.height)
         ])
     }
-    
+
 }
 
 fileprivate extension UIColor {
