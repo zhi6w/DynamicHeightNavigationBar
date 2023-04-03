@@ -15,6 +15,8 @@ class SecondViewController: DynamicNavigationRootViewController {
     private let tableView = UITableView(frame: .zero, style: .plain)
     
     private let seg = UISegmentedControl()
+    
+    private var isShowedWeekdayView = false
         
 
     override func viewDidLoad() {
@@ -48,14 +50,14 @@ extension SecondViewController {
             
             let pushItem = UIBarButtonItem(customView: pushButton)
             
-            let changeHeightItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(changeHeight(_:)))
-            
+            // rectangle.compress.vertical
+            // rectangle.expand.vertical
+            let changeHeightItem = UIBarButtonItem(image: UIImage(systemName: "rectangle.expand.vertical"), style: .plain, target: self, action: #selector(changeHeight(_:)))
             navigationItem.rightBarButtonItems = [pushItem, changeHeightItem]
         } else {
             let pushItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(push))
-            let changeHeightItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(changeHeight(_:)))
-            
-            navigationItem.rightBarButtonItems = [pushItem, changeHeightItem]
+           
+            navigationItem.rightBarButtonItems = [pushItem]
         }
     }
     
@@ -70,7 +72,7 @@ extension SecondViewController {
         seg.insertSegment(withTitle: "Second", at: 1, animated: false)
         seg.selectedSegmentIndex = 1
         
-        setNavigationBarContentView(toolbar, expandedView: seg, mode: .replace)
+        setNavigationBarContentView(seg, expandedView: toolbar, mode: .new)
     }
     
     private func setupTableView() {
@@ -107,7 +109,15 @@ extension SecondViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)", for: indexPath)
         
-        cell.textLabel?.text = "\(indexPath.row)"
+        if #available(iOS 14.0, *) {
+            var contentConfiguration = cell.defaultContentConfiguration()
+            
+            contentConfiguration.text = "\(indexPath.row)"
+            
+            cell.contentConfiguration = contentConfiguration
+        } else {
+            cell.textLabel?.text = "\(indexPath.row)"
+        }
         
         return cell
     }
@@ -136,6 +146,15 @@ extension SecondViewController {
     }
     
     @objc private func changeHeight(_ item: UIBarButtonItem) {
+        
+        isShowedWeekdayView.toggle()
+        
+        if #available(iOS 13.0, *) {
+            // rectangle.compress.vertical
+            // rectangle.expand.vertical
+            item.image = isShowedWeekdayView ? UIImage(systemName: "rectangle.compress.vertical") : UIImage(systemName: "rectangle.expand.vertical")
+        }
+        
         changeNavigationBarActiveDisplayMode()
     }
     

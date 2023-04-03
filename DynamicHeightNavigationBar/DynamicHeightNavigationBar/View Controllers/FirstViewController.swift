@@ -54,11 +54,11 @@ extension FirstViewController {
         }
         
         if #available(iOS 14.0, *) {
-//            datePicker.preferredDatePickerStyle = .inline
+            datePicker.preferredDatePickerStyle = .inline
         }
         
         datePicker.backgroundColor = .clear
-                        
+     
         setNavigationBarContentView(datePicker)
         
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -98,18 +98,21 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)", for: indexPath)
         
-        cell.textLabel?.text = "\(indexPath.row)"
+        if #available(iOS 14.0, *) {
+            var contentConfiguration = cell.defaultContentConfiguration()
+            
+            contentConfiguration.text = "\(indexPath.row)"
+            
+            cell.contentConfiguration = contentConfiguration
+        } else {
+            cell.textLabel?.text = "\(indexPath.row)"
+        }
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        print(searchController.searchBar.superview?.superview)
-//        searchController.searchBar.bringSubviewToFront(navigationContentView!)
     }
     
 }

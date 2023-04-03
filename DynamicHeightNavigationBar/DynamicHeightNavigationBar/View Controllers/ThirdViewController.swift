@@ -36,7 +36,7 @@ extension ThirdViewController {
     
     private func setupNavBar() {
         
-        seg.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 31)
+//        seg.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 31)
         seg.backgroundColor = .green
         seg.insertSegment(withTitle: "First", at: 0, animated: false)
         seg.insertSegment(withTitle: "Second", at: 1, animated: false)
@@ -53,16 +53,13 @@ extension ThirdViewController {
             pushButton.addTarget(self, action: #selector(push), for: .touchUpInside)
             
             let pushItem = UIBarButtonItem(customView: pushButton)
-                        
-            let replaceVCsItem = UIBarButtonItem(image: UIImage(systemName: "arrow.up.arrow.down.circle.fill"), style: .plain, target: self, action: #selector(replaceViewControllers(_:)))
-            
-            navigationItem.rightBarButtonItems = [pushItem, replaceVCsItem]
+                                    
+            navigationItem.rightBarButtonItems = [pushItem]
             
         } else {
             let pushItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(push))
-            let replaceVCsItem = UIBarButtonItem(title: "Replace", style: .plain, target: self, action: #selector(replaceViewControllers(_:)))
             
-            navigationItem.rightBarButtonItems = [pushItem, replaceVCsItem]
+            navigationItem.rightBarButtonItems = [pushItem]
         }
     }
     
@@ -100,7 +97,15 @@ extension ThirdViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)", for: indexPath)
         
-        cell.textLabel?.text = "\(indexPath.row)"
+        if #available(iOS 14.0, *) {
+            var contentConfiguration = cell.defaultContentConfiguration()
+            
+            contentConfiguration.text = "\(indexPath.row)"
+            
+            cell.contentConfiguration = contentConfiguration
+        } else {
+            cell.textLabel?.text = "\(indexPath.row)"
+        }
         
         return cell
     }
@@ -119,16 +124,7 @@ extension ThirdViewController {
         
         navigationController?.pushViewController(fourthVC, animated: true)
     }
-    
-    @objc private func replaceViewControllers(_ item: UIBarButtonItem) {
-                
-        let vcs = [DynamicNavigationRootViewController(), DynamicNavigationRootViewController(), DynamicNavigationRootViewController()]
-        navigationController?.setViewControllers(vcs, animated: true)
-        
-//        let vc = navigationController?.viewControllers[1] ?? UIViewController()
-//        navigationController?.popToViewController(vc, animated: true)
-    }
-    
+
 }
 
 

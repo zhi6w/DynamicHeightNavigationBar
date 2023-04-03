@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 53;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D90CC97429DAC9EE0010C1FE /* DynamicBarBackgroundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D90CC97329DAC9EE0010C1FE /* DynamicBarBackgroundShadowView.swift */; };
 		D9A9867124EA4CB7008A1EE9 /* DynamicNavigationBarContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9A9867024EA4CB7008A1EE9 /* DynamicNavigationBarContentView.swift */; };
 		D9CCB84824D15F050041D601 /* ZeroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9CCB84724D15F050041D601 /* ZeroViewController.swift */; };
 		D9EF254B231383E20004110E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9EF254A231383E20004110E /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D90CC97329DAC9EE0010C1FE /* DynamicBarBackgroundShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicBarBackgroundShadowView.swift; sourceTree = "<group>"; };
 		D9A9867024EA4CB7008A1EE9 /* DynamicNavigationBarContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicNavigationBarContentView.swift; sourceTree = "<group>"; };
 		D9CCB84724D15F050041D601 /* ZeroViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZeroViewController.swift; sourceTree = "<group>"; };
 		D9EF2547231383E20004110E /* DynamicHeightNavigationBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicHeightNavigationBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +174,7 @@
 				D9EF258923139EF20004110E /* DynamicNavigationBar.swift */,
 				D9EF258D23139F940004110E /* DynamicNavigationRootViewController.swift */,
 				D9A9867024EA4CB7008A1EE9 /* DynamicNavigationBarContentView.swift */,
+				D90CC97329DAC9EE0010C1FE /* DynamicBarBackgroundShadowView.swift */,
 			);
 			path = "Dynamic Navigation Views";
 			sourceTree = "<group>";
@@ -238,8 +241,9 @@
 		D9EF253F231383E20004110E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "Zhi Zhou";
 				TargetAttributes = {
 					D9EF2546231383E20004110E = {
@@ -309,6 +313,7 @@
 			files = (
 				D9CCB84824D15F050041D601 /* ZeroViewController.swift in Sources */,
 				D9EF25832313845B0004110E /* FourthViewController.swift in Sources */,
+				D90CC97429DAC9EE0010C1FE /* DynamicBarBackgroundShadowView.swift in Sources */,
 				D9EF257F2313843E0004110E /* SecondViewController.swift in Sources */,
 				D9EF257D231384330004110E /* FirstViewController.swift in Sources */,
 				D9EF25812313844D0004110E /* ThirdViewController.swift in Sources */,
@@ -398,6 +403,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -458,6 +464,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -529,7 +536,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DynamicHeightNavigationBarTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -550,7 +557,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DynamicHeightNavigationBarTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

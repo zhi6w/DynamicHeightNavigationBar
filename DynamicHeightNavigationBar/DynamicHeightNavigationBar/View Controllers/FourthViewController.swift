@@ -34,16 +34,14 @@ extension FourthViewController {
     }
     
     private func setupNavBar() {
-                                
-        seg.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 31)
-        
+
+        //        seg.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 30)
         seg.insertSegment(withTitle: "First", at: 0, animated: false)
         seg.insertSegment(withTitle: "Second", at: 1, animated: false)
         
         seg.selectedSegmentIndex = 1
         
         setNavigationBarContentView(seg)
-        
         
         if #available(iOS 13.0, *) {
             let backToRootVCItem = UIBarButtonItem(image: UIImage(systemName: "backward.end.alt.fill"), style: .plain, target: self, action: #selector(backToRootViewController(_:)))
@@ -90,7 +88,14 @@ extension FourthViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)", for: indexPath)
         
-        cell.textLabel?.text = "\(indexPath.row)"
+        if #available(iOS 14.0, *) {
+            var contentConfiguration = cell.defaultContentConfiguration()
+            contentConfiguration.text = "\(indexPath.row)"
+            
+            cell.contentConfiguration = contentConfiguration
+        } else {
+            cell.textLabel?.text = "\(indexPath.row)"
+        }
         
         return cell
     }

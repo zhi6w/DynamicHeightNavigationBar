@@ -107,7 +107,7 @@ extension DynamicNavigationController {
 
     // MARK: - pop
     override open func popViewController(animated: Bool) -> UIViewController? {
-        print("pop view controller")
+
         guard let navBar = navigationBar as? DynamicNavigationBar else {
             return super.popViewController(animated: animated)
         }
@@ -299,7 +299,9 @@ extension DynamicNavigationController {
     
     // MARK: - setViewControllers
     open override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
-        print("set view controller")
+        
+        isEndingInteractivePopGestureRecognizer = true
+
         // 重新设定 viewControllers 之前已存在的 viewControllers 数组
         let previousViewControllers = self.viewControllers.compactMap({ $0 as? DynamicNavigationRootViewController })
                 
@@ -311,51 +313,6 @@ extension DynamicNavigationController {
                 viewController.navigationBarContentView.removeFromSuperview()
             }
         }
-                        
-        isEndingInteractivePopGestureRecognizer = true
-        
-//        guard let navBar = navigationBar as? DynamicNavigationBar else { return }
-//
-//        // 在设定新的视图控制器数组时，记录一下老的导航堆栈顶部的视图控制器。
-//        let oldTopVC = topViewController
-//
-//        guard oldTopVC != nil else { return }
-//
-//        guard let topViewController = topViewController else { return }
-//
-//        // 在原有的基础上，同时处理 iOS 14 长按返回按钮的跳转情况。
-//
-//        let height = contentViewHeightCache[topViewController] ?? 0
-//
-//        // 点击返回
-//        if #available(iOS 13.0, *) {} else {
-//            UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
-//                navBar.contentViewHeightLayoutConstraint?.constant = height
-//
-//                // 点击返回没问题，滑动返回不能使用 layoutIfNeeded。
-//                self.navigationBar.layoutIfNeeded()
-//            }, completion: nil)
-//        }
-//
-//        // topVC：点击返回关闭的那个视图控制器。
-//        // visiblePushedVC：点击返回时，显示的那个视图控制器。
-//        let topVC = oldTopVC as? DynamicNavigationRootViewController
-//        let visiblePushedVC = topViewController as? DynamicNavigationRootViewController
-//
-//        // 点击返回时，将要隐藏的视图渐渐变淡。
-//        UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseInOut, animations: {
-//            topVC?.navigationBarContentView.alpha = 0
-//            visiblePushedVC?.navigationBarContentView.alpha = 1
-//        }, completion: { (_) in
-//            /* 这里移除“关闭的那个视图控制器”的 contentView。
-//               是为了防止 contentView 重复在 DynamicNavigationRootViewController 的 viewWillLayoutSubviews 方法内创建。
-//             */
-//            topVC?.navigationBarContentView.removeFromSuperview()
-//        })
-//
-//        if visiblePushedVC == nil {
-//            navBar.setContentViewHeight(.zero)
-//        }
     }
     
 }

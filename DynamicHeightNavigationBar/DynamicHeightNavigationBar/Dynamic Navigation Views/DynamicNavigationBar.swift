@@ -10,6 +10,26 @@ import UIKit
 
 open class DynamicNavigationBar: UINavigationBar {
     
+    /// 导航栏自定义内容视图的显示模式
+    public enum ContentViewDistributionMode: Int, CaseIterable {
+        
+        /// 继续添加新的视图
+        case new = 0
+        
+        /// 覆盖老的视图
+        case replace = 1
+    }
+    
+    /// 导航栏自定义内容视图的布局约束对齐模式
+    public enum ContentViewAlignment: Int, CaseIterable {
+        
+        /// 填充
+        case fill = 0
+        
+        /// 居中
+        case center = 1
+    }
+    
     public let effectView = UIVisualEffectView()
         
     open var effect: UIVisualEffect? {
@@ -20,18 +40,18 @@ open class DynamicNavigationBar: UINavigationBar {
     
     public let contentView = UIView()
     
-    /// NavgationBar 分割线
-    private let separator = UIView()
+    /// NavgationBar 阴影分割线
+    private let backgroundShadowView = DynamicBarBackgroundShadowView()
         
-    open var separatorColor: UIColor? {
+    open var shadowColor: UIColor? {
         didSet {
-            separator.backgroundColor = separatorColor
+            backgroundShadowView.backgroundColor = shadowColor
         }
     }
     
-    open var isHiddenSeparator: Bool = false {
+    open var isHiddenBackgroundShadowView: Bool = false {
         didSet {
-            separator.isHidden = isHiddenSeparator
+            backgroundShadowView.isHidden = isHiddenBackgroundShadowView
         }
     }
     
@@ -63,6 +83,7 @@ open class DynamicNavigationBar: UINavigationBar {
         } else {
             constant = -UIApplication.shared.statusBarFrame.height
         }
+        
         effectViewTopLayoutConstraint?.constant = constant
     }
     
@@ -90,7 +111,7 @@ extension DynamicNavigationBar {
     
     private func setupInterface() {
         setupContentView()
-        setupSeparatorView()
+        setupBackgroundShadowView()
         setupEffectView()
     }
     
@@ -113,19 +134,16 @@ extension DynamicNavigationBar {
         ])
     }
         
-    private func setupSeparatorView() {
+    private func setupBackgroundShadowView() {
         
-        separator.backgroundColor = UIColor.shadowColor
-
-        addSubview(separator)
+        addSubview(backgroundShadowView)
         
-        separator.translatesAutoresizingMaskIntoConstraints = false
+        backgroundShadowView.translatesAutoresizingMaskIntoConstraints = false
                 
         NSLayoutConstraint.activate([
-            separator.leftAnchor.constraint(equalTo: self.leftAnchor),
-            separator.rightAnchor.constraint(equalTo: self.rightAnchor),
-            separator.topAnchor.constraint(equalTo: contentView.bottomAnchor),
-            separator.heightAnchor.constraint(equalToConstant: 1 / UIScreen.main.scale)
+            backgroundShadowView.leftAnchor.constraint(equalTo: self.leftAnchor),
+            backgroundShadowView.rightAnchor.constraint(equalTo: self.rightAnchor),
+            backgroundShadowView.topAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
     
@@ -147,7 +165,7 @@ extension DynamicNavigationBar {
             effectView.leftAnchor.constraint(equalTo: self.leftAnchor),
             effectView.rightAnchor.constraint(equalTo: self.rightAnchor),
             effectViewTopLayoutConstraint!,
-            effectView.bottomAnchor.constraint(equalTo: separator.topAnchor)
+            effectView.bottomAnchor.constraint(equalTo: backgroundShadowView.topAnchor)
         ])
     }
     
@@ -157,19 +175,20 @@ extension DynamicNavigationBar {
     
     /// 设定 contentView 高度
     /// - 高度设定必须在 UIViewController 的 viewWillAppear(_ animated: Bool) 方法内执行。
-    open func setContentViewHeight(_ height: CGFloat) {
+    public func setContentViewHeight(_ height: CGFloat) {
         contentViewHeightLayoutConstraint?.constant = height
     }
     
-    open func addContentSubview(_ view: UIView) {
+    public func addContentSubview(_ view: UIView) {
         
         contentView.addSubview(view)
         
         view.translatesAutoresizingMaskIntoConstraints = false
-
+        
         NSLayoutConstraint.activate([
             view.leftAnchor.constraint(equalTo: contentView.leftAnchor),
             view.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            view.topAnchor.constraint(equalTo: contentView.topAnchor),
             view.heightAnchor.constraint(equalToConstant: view.bounds.height)
         ])
     }
@@ -178,19 +197,26 @@ extension DynamicNavigationBar {
 
 fileprivate extension UIColor {
     
-    /// 分割线颜色
-    static var shadowColor: UIColor {
-        if #available(iOS 13.0, *) {
-            return UIColor { (traitCollection) -> UIColor in
-                if traitCollection.userInterfaceStyle == .dark {
-                    return UIColor(white: 1, alpha: 0.15)
-                } else {
-                    return UIColor(white: 0, alpha: 0.3)
-                }
+    /// 灰色阴影
+    static var chromeShadowColor: UIColor {
+        
+        guard let systemChromeShadowColor = UIColor.value(forKey: "_systemChromeShadowColor") as? UIColor
+        else {
+            if #available(iOS 13.0, *) {
+                return UIColor(dynamicProvider: { $0.userInterfaceStyle == .dark ? .init(white: 1, alpha: 0.15) : .init(white: 0, alpha: 0.3) })
+            } else {
+                return .init(white: 0, alpha: 0.3)
             }
-        } else {
-            return UIColor(white: 0, alpha: 0.3)
         }
+
+        var red: CGFloat = 0
+        var green: CGFloat = 0
+        var blue: CGFloat = 0
+        var alpha: CGFloat = 0
+
+        systemChromeShadowColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
+
+        return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
 }

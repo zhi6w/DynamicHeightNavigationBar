@@ -9,7 +9,7 @@
 import UIKit
 
 open class DynamicNavigationBarContentView: UIView {
-
+    
     open func removeAllSubviews() {
         subviews.forEach({ $0.removeFromSuperview() })
     }

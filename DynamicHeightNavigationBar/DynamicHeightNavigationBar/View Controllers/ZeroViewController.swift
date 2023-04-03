@@ -85,7 +85,15 @@ extension ZeroViewController: UITableViewDataSource, UITableViewDelegate {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "\(UITableViewCell.self)", for: indexPath)
         
-        cell.textLabel?.text = "\(indexPath.row)"
+        if #available(iOS 14.0, *) {
+            var contentConfiguration = cell.defaultContentConfiguration()
+            
+            contentConfiguration.text = "\(indexPath.row)"
+            
+            cell.contentConfiguration = contentConfiguration
+        } else {
+            cell.textLabel?.text = "\(indexPath.row)"
+        }
         
         return cell
     }
